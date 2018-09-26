@@ -70,15 +70,65 @@
 <script src="../../common/js/jquery.js"></script>
 <script>
 // 第1問  id='q1'の要素の文字色を赤色にせよ。
+$('#q1').css('color', 'red');
 // 第2問  id='q2'の要素をクリックしたら背景色をピンクにせよ。
+$('#q2').css('background-color', 'pink');
 // 第3問  id='q3'の要素をクリックしたら2秒かけてフェードアウトさせよ。
+$('#q3').click(function(){
+  $(this).fadeOut(2000);
+});
 // 第4問  id='q4'の要素をクリックしたらこの要素の前後とこの要素内の前後にテキストを挿入せよ。
+$('#q4').click(function(){
+  $(this).prepend('DOMの中の前');
+  $(this).append('DOMの中の後ろ');
+  $(this).after('DOMの外の前');
+  $(this).before('DOMの外の後ろ');
+});
 // 第5問  id='q5'の要素をクリックしたらこの要素にlargeというクラスを付与せよ。
+$('#q5').click(function(){
+  $(this).addClass('large');
+});
 // 第6問  id='q6'の要素をクリックしたらこの要素を2秒かけてmargin-topとmargin-leftを100pxの位置に移動させよ。
+$('#q6').click(function(){
+  $(this).animate(
+  {
+    'margin-top': '100px',
+    'margin-left': '100px'
+  }, 2000
+  );
+})
 // 第7問  id='q7'の子要素をクリックしたら、その要素のインデックス（何番目か）をconsole.log()とalert()を用いて表示させよ。
+var q7_object = $('#q7').find('li')
+
+q7_object.click(function(){
+  var q7_index = $(q7_object).index(this);
+
+  console.log(q7_index + '番目をクリック!');
+  alert(q7_index + '番目をクリック!');
+});
 // 第8問  id='q8'の要素をhoverしたらlargeというクラスを付与し、hoverが外れたら、クラスを削除せよ。
+$('#q8').hover(
+  function() {
+  $(this).addClass('large');
+}, function() {
+  $(this).removeClass('large');
+});
+
 // 第9問  id='q9'の要素をクリックしたらこの要素に設定してあるdata属性をconsoleに表示せよ。
+
+$('#q9').click(function() {
+  console.log($(this).data());
+});
+
 // 第10問 id='q10'の子要素をクリックしたら、その要素のインデックスと等しいid='q11'の子要素にlargeというクラスを追加せよ。
+var q10_object = $('#q10').find('li')
+
+q10_object.click(function(){
+  var index = $(q10_object).index(this);
+  // console.log(index)
+$('#q11').find('li').eq(index).addClass('large');
+});
+
 </script>
 </body>
 </html>
